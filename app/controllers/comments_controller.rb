@@ -16,7 +16,11 @@ class CommentsController < ApplicationController
         create_at: comment.created_at,
         writer: {
           email: comment.writer.email,
-          avatar_url: comment.writer.avatar.url
+          avatar_url: {
+            original: comment.writer.avatar.url,
+            medium: comment.writer.avatar.url(:medium),
+            thumb: comment.writer.avatar.url(:thumb)
+          }
         }
       })
     }
